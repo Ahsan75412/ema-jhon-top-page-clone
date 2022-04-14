@@ -11,12 +11,14 @@
 
 # if user is created navigate to shop page.
 # useSignInWithEmailAndPassword for sign in
+#create requre Auth component ==> check if user is signed in or not.also track user Location
+# in route wrap protected routes with auth component.
 
 */
 
 
 /* 
-* Hosting steps:-
+* Firebase Hosting steps:-
 # npm install -g firebase-tools
 # firebase login
 # firebase init
