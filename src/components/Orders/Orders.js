@@ -8,23 +8,23 @@ import ReviewItem from '../ReviewItem/ReviewItem';
 import './Orders.css';
 
 const Orders = () => {
-   const [products , setProducts] = useProducts(); //from hooks folder calling a  function
-   const navigate = useNavigate();
-   const [cart , setCart] = useCart(products);
+    const [products, setProducts] = useProducts(); //from hooks folder calling a  function
+    const navigate = useNavigate();
+    const [cart, setCart] = useCart();
 
-   const handleRemoveProduct = product =>{
-        const rest = cart.filter(pd => pd.id !== product.id);
+    const handleRemoveProduct = product => {
+        const rest = cart.filter(pd => pd._id !== product._id);
         setCart(rest);
-        removeFromDb(product.id);
-   }
+        removeFromDb(product._id);
+    }
     return (
         <div className='shop-container'>
             <div className="review-items-container">
                 {
-                    cart.map(product => <ReviewItem 
-                        key = {product.id}
-                        product = {product}
-                        handleRemoveProduct = {handleRemoveProduct}
+                    cart.map(product => <ReviewItem
+                        key={product._id}
+                        product={product}
+                        handleRemoveProduct={handleRemoveProduct}
                     ></ReviewItem>)
                 }
             </div>
@@ -33,10 +33,10 @@ const Orders = () => {
                     {/* <Link to="/inventory">
                         <button>Proceed Checkout</button>
                     </Link> */}
-                     <button onClick={()=> navigate('/shipment')}>Proceed Shipping</button>
+                    <button onClick={() => navigate('/shipment')}>Proceed Shipping</button>
                 </Cart>
             </div>
-           
+
         </div>
     );
 };
